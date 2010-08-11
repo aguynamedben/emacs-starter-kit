@@ -151,4 +151,10 @@
             (ibuffer-auto-mode 1)
             (ibuffer-switch-to-saved-filter-groups "default")))
 
+;; Enable winner-mode to switch between window configurations using
+;; C-c + arrow
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
+
 ;;; init.el ends here
