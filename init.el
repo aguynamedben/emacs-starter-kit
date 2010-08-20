@@ -156,5 +156,8 @@
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 
+;; magit for awesome git integration!
+;; http://github.com/philjackson/magit
+(require 'magit)
 
 ;;; init.el ends here
