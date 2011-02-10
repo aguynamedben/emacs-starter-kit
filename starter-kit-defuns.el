@@ -75,7 +75,7 @@ Symbols matching the text at point are put first in the completion list."
 
 (defun local-comment-auto-fill ()
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
-  (auto-fill-mode t))
+  (auto-fill-mode nil))
 
 (defun turn-on-hl-line-mode ()
   (when (> (display-color-cells) 8) (hl-line-mode t)))

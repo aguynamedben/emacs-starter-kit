@@ -163,3 +163,43 @@ windows))))
              (setq pass 2)))
            (select-window curw)))
 (global-set-key (kbd "C-c w") 'balance-windows-area)
+
+
+;; Make connecting to servers easier
+(defvar ssh-connection-alist
+  '())
+
+(setq ssh-connection-alist
+  '((sgdev . "ec2-204-236-167-168.us-west-1.compute.amazonaws.com")
+    (sgtail . "ec2-204-236-167-168.us-west-1.compute.amazonaws.com")
+    (sggate . "ec2-204-236-167-168.us-west-1.compute.amazonaws.com")
+    (sgpushpin . "ec2-204-236-167-168.us-west-1.compute.amazonaws.com")
+    (sgbulkloader . "ec2-204-236-167-168.us-west-1.compute.amazonaws.com")
+
+    (bendev . "ec2-184-72-11-102.us-west-1.compute.amazonaws.com")))
+
+(defun ssh-convenience ()
+  "Make SSH convenience functions."
+  (interactive)
+  (mapcar (lambda (conn)
+            (let ((name (symbol-name (car conn)))
+                  (host (cdr conn)))
+              (fset (intern name)
+                    `(lambda nil
+                       ,(format "Connect to %s SSH preset." name)
+                       (interactive)
+                       (let ((buffer-name ,(format "*ssh-%s*" name)))
+                         (if (get-buffer buffer-name)
+                             (pop-to-buffer buffer-name)
+                           (ssh ,host (pop-to-buffer buffer-name))))))))
+          ssh-connection-alist))
+
+(ssh-convenience)
+
+
+;; Enable line number and column number display
+(setq line-number-mode t)
+(setq column-number-mode t)
+
+;; Shortcut for rename-buffer
+(global-set-key (kbd "C-c b") 'rename-buffer)
