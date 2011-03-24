@@ -1,3 +1,6 @@
+;; Set font to Monaco-11
+(set-default-font "Monaco-11")
+
 ;; [4:28] Ian Eure: You will need these things: http://gist.github.com/457925
 ;; [4:28] Ian Eure: And http://gist.github.com/457933
 ;; [4:28] Ian Eure: Then M-x ssh RET hostname RET
