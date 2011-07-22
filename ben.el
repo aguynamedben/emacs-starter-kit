@@ -131,3 +131,7 @@
           ssh-connection-alist))
 
 (ssh-convenience)
+
+
+;; Set font to Monaco-12
+(set-default-font "Monaco-12")
