@@ -135,3 +135,6 @@
 
 ;; Set font to Monaco-12
 (set-default-font "Monaco-12")
+
+
+(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
