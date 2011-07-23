@@ -135,3 +135,10 @@
 
 ;; Set font to Monaco-12
 (set-default-font "Monaco-12")
+
+
+;; Make TextExpander work with Emacs on OS X
+;; http://hints.macworld.com/article.php?story=20091013214429696
+(setq ns-alternate-modifier 'alt)
+(define-key global-map [(alt ?v)] 'scroll-down)
+(define-key global-map [(meta ?v)] 'yank)
